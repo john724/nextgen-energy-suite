@@ -10,11 +10,17 @@ build/
 .eggs/
 *.egg
 
-# Virtual environments
-venv/
-env/
-.venv/
+# Virtual# Environments
 .env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# NextGen Specific
+banner.png
 
 # IDE & editors
 .vscode/

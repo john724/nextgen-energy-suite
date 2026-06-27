@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Energy Suite Dashboard</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for Data Visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb primary-orb"></div>
+        <div class="glow-orb secondary-orb"></div>
+    </div>
+
+    <div class="app-container">
+        <header class="glass-panel main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="bolt">⚡</span>
+                    <h1>NextGen Energy Suite</h1>
+                </div>
+                <nav class="tabs">
+                    <button class="tab-btn active" data-target="b2b-tab">B2B Optimizer</button>
+                    <button class="tab-btn" data-target="p2p-tab">P2P MicroGrid</button>
+                    <button class="tab-btn" data-target="ev-tab">EV Fleet</button>
+                </nav>
+            </div>
+        </header>
+
+        <main class="content-area">
+            <!-- B2B Optimizer Tab -->
+            <section id="b2b-tab" class="tab-content active">
+                <div class="dashboard-grid">
+                    <div class="glass-panel chart-card">
+                        <h2>24h Load & Spot Price Profile</h2>
+                        <div class="chart-container">
+                            <canvas id="b2bChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="glass-panel stats-card">
+                        <h2>Optimization Summary</h2>
+                        <div id="b2b-stats" class="stats-grid">
+                            <div class="stat-box loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- P2P MicroGrid Tab -->
+            <section id="p2p-tab" class="tab-content">
+                <div class="dashboard-grid">
+                    <div class="glass-panel chart-card">
+                        <h2>Participant Net Benefit vs Grid-Only</h2>
+                        <div class="chart-container">
+                            <canvas id="p2pChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="glass-panel stats-card">
+                        <h2>Market Welfare Analysis</h2>
+                        <div id="p2p-stats" class="stats-grid">
+                            <div class="stat-box loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EV Fleet Tab -->
+            <section id="ev-tab" class="tab-content">
+                <div class="dashboard-grid">
+                    <div class="glass-panel chart-card">
+                        <h2>Fleet Vehicle Costs (Smart Charge vs Naive)</h2>
+                        <div class="chart-container">
+                            <canvas id="evChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="glass-panel stats-card">
+                        <h2>Fleet ROI Projections</h2>
+                        <div id="ev-stats" class="stats-grid">
+                            <div class="stat-box loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
