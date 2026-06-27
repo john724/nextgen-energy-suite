@@ -8,6 +8,8 @@
 [![License](https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-3.0.0-F59E0B?style=for-the-badge)](CHANGELOG.md)
 [![pandas](https://img.shields.io/badge/pandas-1.5%2B-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![CI](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](CONTRIBUTING.md)
 [![Stars](https://img.shields.io/github/stars/john724/nextgen-energy-suite?style=for-the-badge&color=yellow)](https://github.com/john724/nextgen-energy-suite/stargazers)
 
@@ -66,12 +68,26 @@ python b2b_energy_optimizer.py
 ```
 
 ### Requirements
-- Python **3.10+** (uses `list[type]` type hint syntax)
-- `pandas`, `numpy`, `fastapi`, `uvicorn`, `python-dotenv`
+- Python **3.10+**
+- `pandas`, `numpy`, `fastapi`, `uvicorn`, `python-dotenv`, `scikit-learn`, `joblib`
 
 ---
 
-## 🌐 Web Dashboard & API (New in v3.1.0)
+## 🧠 Machine Learning Engine (v3.2.0)
+
+The suite now features an integrated Machine Learning layer powered by `scikit-learn`.
+If `ML_MODE="true"` is set in your `.env` file, the modules will ignore static data and instead dynamically load pre-trained predictive models:
+- **Consumption Predictor**: A Random Forest Regressor trained on weather and calendar features to predict daily load curves.
+- **Price Forecaster**: A Multi-Layer Perceptron (MLP) Neural Network that predicts EPEX Spot market prices based on synthetic solar irradiance.
+
+To train the models yourself:
+```bash
+python ml_engine.py
+```
+
+---
+
+## 🌐 Web Dashboard & API (v3.1.0)
 
 NextGen Energy Suite now includes a **FastAPI backend** and a beautiful, **glassmorphism Web Dashboard** to visualize all the data. 
 

@@ -113,6 +113,18 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+.badge {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid var(--primary-teal);
+    color: var(--primary-teal);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: 1rem;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
 /* Tabs */
 .tabs {
     display: flex;

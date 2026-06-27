@@ -71,6 +71,18 @@ const createStatBox = (label, value, isHighlight = false) => `
 
 // ── Data Fetching & Rendering ────────────────────────────────────────────────
 
+async function loadConfig() {
+    try {
+        const res = await fetch(`${API_BASE}/config`);
+        const config = await res.json();
+        if (config.ml_mode_active) {
+            document.getElementById('ai-badge').style.display = 'inline-block';
+        }
+    } catch (e) {
+        console.error("Config load failed", e);
+    }
+}
+
 async function loadB2BData() {
     try {
         const response = await fetch(`${API_BASE}/b2b`);
@@ -219,4 +231,5 @@ async function loadEVData() {
 }
 
 // Initial Load for B2B Tab
+loadConfig();
 loadB2BData();

@@ -29,6 +29,8 @@ import numpy as np
 from datetime import datetime, timedelta
 from dataclasses import dataclass, field
 from typing import Optional
+import os
+import ml_engine
 
 # ── Encoding safety for Windows cp1252 terminals ─────────────────────────────
 if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
@@ -63,6 +65,12 @@ SPOT_PRICES_EUR: list[float] = [
     0.319, 0.298, 0.281, 0.264, 0.252, 0.278,
     0.322, 0.301, 0.221, 0.180, 0.142, 0.118,
 ]
+
+if os.getenv("ML_MODE", "false").lower() == "true" and ml_engine.ML_AVAILABLE:
+    try:
+        CONSUMPTION_KW, SPOT_PRICES_EUR = ml_engine.generate_tomorrow_forecast()
+    except Exception as e:
+        print(f"⚠️ ML forecast failed, falling back to static data: {e}")
 
 # Grid CO₂ intensity (kg CO₂ / kWh) — varies by generation mix
 CARBON_INTENSITY: list[float] = [

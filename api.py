@@ -28,6 +28,14 @@ app = FastAPI(
 
 # ── API ENDPOINTS ─────────────────────────────────────────────────────────────
 
+@app.get("/api/config")
+def get_config():
+    """Returns global app configuration."""
+    return {
+        "ml_mode_active": os.getenv("ML_MODE", "false").lower() == "true",
+        "app_version": "3.2.0"
+    }
+
 @app.get("/api/b2b")
 def get_b2b_optimization():
     """Runs the B2B Energy Optimizer and returns the metrics."""

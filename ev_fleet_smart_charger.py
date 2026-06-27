@@ -32,6 +32,8 @@ import math
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional
+import os
+import ml_engine
 
 if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -60,6 +62,14 @@ SPOT_PRICES: dict[int, float] = {
     12: 0.316, 13: 0.296, 14: 0.278, 15: 0.261, 16: 0.249, 17: 0.275,
     18: 0.319, 19: 0.298, 20: 0.219, 21: 0.178, 22: 0.140, 23: 0.116,
 }
+
+if os.getenv("ML_MODE", "false").lower() == "true" and ml_engine.ML_AVAILABLE:
+    try:
+        _, _ml_prices = ml_engine.generate_tomorrow_forecast()
+        for h in range(24):
+            SPOT_PRICES[h] = _ml_prices[h]
+    except Exception as e:
+        print(f"⚠️ ML forecast failed, falling back to static data: {e}")
 
 # On-site solar PV generation (kW per hour)
 SOLAR_KW: dict[int, float] = {
